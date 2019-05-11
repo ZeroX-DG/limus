@@ -1,0 +1,34 @@
+.property-controller
+  width: 800px
+  height: 250px
+  background: white
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25)
+  position: absolute
+  z-index: 1000
+  bottom: 20px
+  left: calc((100% - 800px) / 2)
+  padding: 20px
+  box-sizing: border-box
+  font-family: 'Ubuntu Mono', monospace
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  .controller-opacity
+    width: 100%
+    display: flex
+    align-items: center
+    input
+      width: calc(100% - 200px)
+      margin-left: 30px
+  .main-controls
+    display: flex
+  table
+    width: 50%
+    &:first-child
+      border-right: 1px solid rgba(0, 0, 0, 0.25)
+    &:last-child
+      padding-left: 5px
+  .control
+    height: 30px
+    .control-name
+      margin-right: 20px
