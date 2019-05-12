@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ColorPicker from "./color-picker";
 import Switch from "./switch";
+import exportImage from "../export";
 import "./property-controller.sass";
 
 export interface IPropertyList {
@@ -189,7 +190,7 @@ export default (props: IPropertyControllerProps) => {
           min="20"
           max="100"
         />
-        <span className="camera"><i className="fa fa-camera" /></span>
+        <span className="camera" onClick={exportImage}><i className="fa fa-camera" /></span>
       </div>
       <div className="main-controls">
         <table>

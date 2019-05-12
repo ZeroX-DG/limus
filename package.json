@@ -14,6 +14,7 @@
   "author": "Viet Hung Nguyen <viethungax@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/html2canvas": "0.0.35",
     "@types/react": "^16.8.17",
     "@types/react-color": "^3.0.0",
     "@types/react-dom": "^16.8.4",
@@ -22,6 +23,7 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
+    "html2canvas": "^1.0.0-rc.1",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
     "react-dom": "^16.8.6"

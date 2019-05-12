@@ -27,6 +27,7 @@ export default (props: ISwitchProps) => {
       {
         props.labels.map((label, i: number) => (
           <div
+            key={i}
             className={`switch ${index === i ? "active" : ""}`}
             onClick={() => onChange(i)}
           >
