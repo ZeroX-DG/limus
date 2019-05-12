@@ -1,4 +1,4 @@
-.twoway-switch
+.multi-switch
   height: 24px
   box-sizing: border-box
   font-size: 16px
@@ -16,6 +16,9 @@
     justify-content: center
     user-select: none
     cursor: pointer
+    border-right: 1px solid rgba(0, 0, 0, 0.25)
+    &:last-child
+      border: none
     &.active
       background: #3498db
       color: white

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ColorPicker from "./color-picker";
-import TwoWaySwitch from "./twoway-switch";
+import Switch from "./switch";
 import "./property-controller.sass";
 
 export interface IPropertyList {
@@ -14,7 +14,7 @@ export interface IPropertyList {
   shadowY: number,
   shadowBlur: number,
   corner: number,
-  isColorBackground: boolean,
+  backgroundType: string,
   backgroundSource: string
 }
 
@@ -33,7 +33,7 @@ export default (props: IPropertyControllerProps) => {
   const [shadowY, setShadowY] = useState(10);
   const [shadowBlur, setShadowBlur] = useState(20);
   const [corner, setCorner] = useState(0);
-  const [isColorBackground, setIsColorBackground] = useState(true);
+  const [backgroundType, setBackgroundType] = useState("color");
   const [backgroundSource, setBackgroundSource] = useState("#6c5ce7");
   const [controllerOpacity, setControllerOpacity] = useState(100);
   const [isFreeHandRotate, setIsFreeHandRotate] = useState(false);
@@ -51,7 +51,7 @@ export default (props: IPropertyControllerProps) => {
       shadowY,
       shadowBlur,
       corner,
-      isColorBackground,
+      backgroundType,
       backgroundSource
     }
   }
@@ -91,8 +91,8 @@ export default (props: IPropertyControllerProps) => {
     setControllerOpacity(parseInt(e.target.value));
   }
 
-  const handleBackgroundTypeChange = (isColorBackground: string) => {
-    setIsColorBackground(isColorBackground === "true");
+  const handleBackgroundTypeChange = (backgroundType: string) => {
+    setBackgroundType(backgroundType);
   }
 
   useEffect(() => {
@@ -163,6 +163,19 @@ export default (props: IPropertyControllerProps) => {
     return Math.max(Math.min(n, high), low)
   }
 
+  const handlePickBackground = () => {
+    document.getElementById("background-input").click();
+  }
+
+  const handleBackgroundImageInput = (e: any) => {
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      setBackgroundSource(event.target.result);
+      props.onPropertyChange(getAllProperties());
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  }
+
   return (
     <div
       className={`property-controller ${isFreeHandRotate ? 'hide' : ''}`}
@@ -176,6 +189,7 @@ export default (props: IPropertyControllerProps) => {
           min="20"
           max="100"
         />
+        <span className="camera"><i className="fa fa-camera" /></span>
       </div>
       <div className="main-controls">
         <table>
@@ -320,15 +334,15 @@ export default (props: IPropertyControllerProps) => {
             <tr className="control">
               <td>Background type:</td>
               <td>
-                <TwoWaySwitch
-                  value={isColorBackground + ""}
-                  values={["true", "false"]}
-                  labels={["color", "image"]}
+                <Switch
+                  value={backgroundType}
+                  values={["color", "image", "none"]}
+                  labels={["color", "image", "transparent"]}
                   onChange={handleBackgroundTypeChange}
                 />
               </td>
             </tr>
-            {isColorBackground ? (
+            {backgroundType === "color" && (
               <tr className="control">
                 <td>Background color:</td>
                 <td>
@@ -338,18 +352,21 @@ export default (props: IPropertyControllerProps) => {
                   />
                 </td>
               </tr>
-            ) : (
-                <tr className="control">
-                  <td>Background image:</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={isColorBackground}
-                      onChange={handleCheckboxChange("isColorBackground")}
-                    />
-                  </td>
-                </tr>
-              )}
+            )}
+            {backgroundType === "image" && (
+              <tr className="control">
+                <td>Background image:</td>
+                <td>
+                  <input
+                    id="background-input"
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleBackgroundImageInput}
+                  />
+                  <button onClick={handlePickBackground}>Pick background</button>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

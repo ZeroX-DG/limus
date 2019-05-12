@@ -13,7 +13,7 @@ export default () => {
   return (
     <>
       <BackgroundDisplay
-        isImage={!properties.isColorBackground}
+        backgroundType={properties.backgroundType}
         src={properties.backgroundSource}
       />
       <ImageDisplay
