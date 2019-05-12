@@ -16,7 +16,9 @@ export default () => {
         isImage={!properties.isColorBackground}
         src={properties.backgroundSource}
       />
-      <ImageDisplay image="https://res.cloudinary.com/practicaldev/image/fetch/s--Sb970a_9--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://huytd.github.io/img/custom-emacs.png" properties={properties} />
+      <ImageDisplay
+        image="https://res.cloudinary.com/practicaldev/image/fetch/s--Sb970a_9--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://huytd.github.io/img/custom-emacs.png"
+        properties={properties} />
       <PropertyController onPropertyChange={handlePropertyChange} />
     </>
   )

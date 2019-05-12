@@ -13,6 +13,11 @@
   display: flex
   flex-direction: column
   justify-content: space-between
+  transition: opacity 0.3s
+  &.hide
+    pointer-events: none
+    opacity: 0!important
+    user-select: none
   .controller-opacity
     width: 100%
     display: flex

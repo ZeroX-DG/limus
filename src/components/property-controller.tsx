@@ -34,8 +34,10 @@ export default (props: IPropertyControllerProps) => {
   const [shadowBlur, setShadowBlur] = useState(20);
   const [corner, setCorner] = useState(0);
   const [isColorBackground, setIsColorBackground] = useState(true);
-  const [backgroundSource, setBackgroundSource] = useState("#2c3e50");
+  const [backgroundSource, setBackgroundSource] = useState("#6c5ce7");
   const [controllerOpacity, setControllerOpacity] = useState(100);
+  const [isFreeHandRotate, setIsFreeHandRotate] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
   const getAllProperties = () => {
     return {
@@ -94,11 +96,77 @@ export default (props: IPropertyControllerProps) => {
   }
 
   useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
     props.onPropertyChange(getAllProperties());
-  })
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    }
+  });
+
+  const handleKeyUp = () => {
+    setIsFreeHandRotate(false);
+  }
+
+  const handleKeyDown = (e: any) => {
+    if (e.which === 16) { // Shift key
+      setIsFreeHandRotate(true);
+    }
+  }
+
+  const handleMouseMove = (e: any) => {
+    if (!isFreeHandRotate) return;
+    if (!isMouseDown) return;
+
+    const newRotateX = Math.floor(
+      constraint(
+        map(e.pageY, 0, window.innerHeight, 90, -90), -90, 90
+      )
+    );
+
+    const newRotateY = Math.floor(
+      constraint(
+        map(e.pageX, 0, window.innerWidth, -90, 90), -90, 90
+      )
+    );
+
+    setRotationX(newRotateX);
+    setRotationY(newRotateY);
+
+    props.onPropertyChange(getAllProperties());
+  };
+
+  const handleMouseDown = () => {
+    if (!isFreeHandRotate) return;
+    if (isMouseDown) return;
+
+    setIsMouseDown(true);
+  }
+
+  const handleMouseUp = () => {
+    setIsMouseDown(false);
+  }
+
+  // stolen from P5.js :)
+  const map = (n: number, start1: number, stop1: number, start2: number, stop2: number) => {
+    return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
+  };
+
+  const constraint = (n: number, low: number, high: number) => {
+    return Math.max(Math.min(n, high), low)
+  }
 
   return (
-    <div className="property-controller" style={{ opacity: controllerOpacity / 100 }}>
+    <div
+      className={`property-controller ${isFreeHandRotate ? 'hide' : ''}`}
+      style={{ opacity: controllerOpacity / 100 }}>
       <div className="controller-opacity">
         <span>Controller opacity: </span>
         <input
