@@ -205,6 +205,10 @@ export default (props: IPropertyControllerProps) => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const handleExportImage = () => {
+    exportImage(backgroundType, backgroundSource);
+  };
+
   return (
     <div
       className={`property-controller ${isFreeHandRotate ? "hide" : ""}`}
@@ -219,7 +223,7 @@ export default (props: IPropertyControllerProps) => {
           min="20"
           max="100"
         />
-        <span className="camera" onClick={exportImage}>
+        <span className="camera" onClick={handleExportImage}>
           <i className="fa fa-camera" />
         </span>
       </div>
