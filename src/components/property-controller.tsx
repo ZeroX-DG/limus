@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import ColorPicker from "./color-picker";
 import Switch from "./switch";
-import exportImage from "../export";
+import exportImage from "../lib/export";
 import "./property-controller.sass";
 
 export interface IPropertyList {
-  rotationY: number,
-  rotationX: number,
-  rotationZ: number,
-  perspective: number,
-  positionLeft: number,
-  positionTop: number,
-  dropShadow: boolean,
-  shadowY: number,
-  shadowBlur: number,
-  corner: number,
-  backgroundType: string,
-  backgroundSource: string
+  rotationY: number;
+  rotationX: number;
+  rotationZ: number;
+  perspective: number;
+  positionLeft: number;
+  positionTop: number;
+  dropShadow: boolean;
+  shadowY: number;
+  shadowBlur: number;
+  corner: number;
+  backgroundType: string;
+  backgroundSource: string;
 }
 
 interface IPropertyControllerProps {
@@ -54,47 +54,72 @@ export default (props: IPropertyControllerProps) => {
       corner,
       backgroundType,
       backgroundSource
-    }
-  }
+    };
+  };
 
-  const handleSliderChange = (property: string) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = parseInt(e.target.value);
-      switch (property) {
-        case "rotationY": setRotationY(value); break;
-        case "rotationX": setRotationX(value); break;
-        case "rotationZ": setRotationZ(value); break;
-        case "perspective": setPerspective(value); break;
-        case "positionLeft": setPositionLeft(value); break;
-        case "positionTop": setPositionTop(value); break;
-        case "shadowY": setShadowY(value); break;
-        case "shadowBlur": setShadowBlur(value); break;
-        case "corner": setCorner(value); break;
-      }
-      props.onPropertyChange(getAllProperties());
+  const handleSliderChange = (property: string) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = parseInt(e.target.value);
+    switch (property) {
+      case "rotationY":
+        setRotationY(value);
+        break;
+      case "rotationX":
+        setRotationX(value);
+        break;
+      case "rotationZ":
+        setRotationZ(value);
+        break;
+      case "perspective":
+        setPerspective(value);
+        break;
+      case "positionLeft":
+        setPositionLeft(value);
+        break;
+      case "positionTop":
+        setPositionTop(value);
+        break;
+      case "shadowY":
+        setShadowY(value);
+        break;
+      case "shadowBlur":
+        setShadowBlur(value);
+        break;
+      case "corner":
+        setCorner(value);
+        break;
     }
+    props.onPropertyChange(getAllProperties());
+  };
 
-  const handleCheckboxChange = (property: string) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.checked;
-      switch (property) {
-        case "dropShadow": setDropShadow(value); break;
-      }
-      props.onPropertyChange(getAllProperties());
+  const handleCheckboxChange = (property: string) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = e.target.checked;
+    switch (property) {
+      case "dropShadow":
+        setDropShadow(value);
+        break;
     }
+    props.onPropertyChange(getAllProperties());
+  };
 
   const handleBackgroundColorChange = (color: string) => {
     setBackgroundSource(color);
     props.onPropertyChange(getAllProperties());
-  }
+  };
 
-  const handleControllerOpacityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleControllerOpacityChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setControllerOpacity(parseInt(e.target.value));
-  }
+  };
 
   const handleBackgroundTypeChange = (backgroundType: string) => {
     setBackgroundType(backgroundType);
-  }
+    backgroundType.charAt(0);
+  };
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -109,33 +134,30 @@ export default (props: IPropertyControllerProps) => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
-    }
+    };
   });
 
   const handleKeyUp = () => {
     setIsFreeHandRotate(false);
-  }
+  };
 
   const handleKeyDown = (e: any) => {
-    if (e.which === 16) { // Shift key
+    if (e.which === 16) {
+      // Shift key
       setIsFreeHandRotate(true);
     }
-  }
+  };
 
   const handleMouseMove = (e: any) => {
     if (!isFreeHandRotate) return;
     if (!isMouseDown) return;
 
     const newRotateX = Math.floor(
-      constraint(
-        map(e.pageY, 0, window.innerHeight, 90, -90), -90, 90
-      )
+      constraint(map(e.pageY, 0, window.innerHeight, 90, -90), -90, 90)
     );
 
     const newRotateY = Math.floor(
-      constraint(
-        map(e.pageX, 0, window.innerWidth, -90, 90), -90, 90
-      )
+      constraint(map(e.pageX, 0, window.innerWidth, -90, 90), -90, 90)
     );
 
     setRotationX(newRotateX);
@@ -149,38 +171,45 @@ export default (props: IPropertyControllerProps) => {
     if (isMouseDown) return;
 
     setIsMouseDown(true);
-  }
+  };
 
   const handleMouseUp = () => {
     setIsMouseDown(false);
-  }
+  };
 
   // stolen from P5.js :)
-  const map = (n: number, start1: number, stop1: number, start2: number, stop2: number) => {
+  const map = (
+    n: number,
+    start1: number,
+    stop1: number,
+    start2: number,
+    stop2: number
+  ) => {
     return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
   };
 
   const constraint = (n: number, low: number, high: number) => {
-    return Math.max(Math.min(n, high), low)
-  }
+    return Math.max(Math.min(n, high), low);
+  };
 
   const handlePickBackground = () => {
     document.getElementById("background-input").click();
-  }
+  };
 
   const handleBackgroundImageInput = (e: any) => {
     var reader = new FileReader();
     reader.onload = (event: any) => {
       setBackgroundSource(event.target.result);
       props.onPropertyChange(getAllProperties());
-    }
+    };
     reader.readAsDataURL(e.target.files[0]);
-  }
+  };
 
   return (
     <div
-      className={`property-controller ${isFreeHandRotate ? 'hide' : ''}`}
-      style={{ opacity: controllerOpacity / 100 }}>
+      className={`property-controller ${isFreeHandRotate ? "hide" : ""}`}
+      style={{ opacity: controllerOpacity / 100 }}
+    >
       <div className="controller-opacity">
         <span>Controller opacity: </span>
         <input
@@ -190,7 +219,9 @@ export default (props: IPropertyControllerProps) => {
           min="20"
           max="100"
         />
-        <span className="camera" onClick={exportImage}><i className="fa fa-camera" /></span>
+        <span className="camera" onClick={exportImage}>
+          <i className="fa fa-camera" />
+        </span>
       </div>
       <div className="main-controls">
         <table>
@@ -364,7 +395,9 @@ export default (props: IPropertyControllerProps) => {
                     style={{ display: "none" }}
                     onChange={handleBackgroundImageInput}
                   />
-                  <button onClick={handlePickBackground}>Pick background</button>
+                  <button onClick={handlePickBackground}>
+                    Pick background
+                  </button>
                 </td>
               </tr>
             )}
@@ -372,5 +405,5 @@ export default (props: IPropertyControllerProps) => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
