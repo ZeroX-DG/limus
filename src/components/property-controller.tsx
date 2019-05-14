@@ -15,6 +15,7 @@ export interface IPropertyList {
   shadowY: number;
   shadowBlur: number;
   corner: number;
+  scale: number;
   backgroundType: string;
   backgroundSource: string;
 }
@@ -34,6 +35,7 @@ export default (props: IPropertyControllerProps) => {
   const [shadowY, setShadowY] = useState(10);
   const [shadowBlur, setShadowBlur] = useState(20);
   const [corner, setCorner] = useState(0);
+  const [scale, setScale] = useState(1);
   const [backgroundType, setBackgroundType] = useState("color");
   const [backgroundSource, setBackgroundSource] = useState("#6c5ce7");
   const [controllerOpacity, setControllerOpacity] = useState(100);
@@ -52,6 +54,7 @@ export default (props: IPropertyControllerProps) => {
       shadowY,
       shadowBlur,
       corner,
+      scale,
       backgroundType,
       backgroundSource
     };
@@ -88,6 +91,9 @@ export default (props: IPropertyControllerProps) => {
         break;
       case "corner":
         setCorner(value);
+        break;
+      case "scale":
+        setScale(value / 10);
         break;
     }
     props.onPropertyChange(getAllProperties());
@@ -139,12 +145,14 @@ export default (props: IPropertyControllerProps) => {
 
   const handleKeyUp = () => {
     setIsFreeHandRotate(false);
+    document.body.style.cursor = "initial";
   };
 
   const handleKeyDown = (e: any) => {
     if (e.which === 16) {
       // Shift key
       setIsFreeHandRotate(true);
+      document.body.style.cursor = "grab";
     }
   };
 
@@ -171,6 +179,7 @@ export default (props: IPropertyControllerProps) => {
     if (isMouseDown) return;
 
     setIsMouseDown(true);
+    document.body.style.cursor = "grabbing";
   };
 
   const handleMouseUp = () => {
@@ -308,6 +317,19 @@ export default (props: IPropertyControllerProps) => {
               </td>
               <td>{positionTop}</td>
             </tr>
+            <tr className="control">
+              <td>Image scale:</td>
+              <td>
+                <input
+                  type="range"
+                  value={scale * 10}
+                  onChange={handleSliderChange("scale")}
+                  min="0"
+                  max={40}
+                />
+              </td>
+              <td>{scale}</td>
+            </tr>
           </tbody>
         </table>
         <table>
@@ -362,10 +384,10 @@ export default (props: IPropertyControllerProps) => {
                   value={corner}
                   onChange={handleSliderChange("corner")}
                   min="0"
-                  max="100"
+                  max="200"
                 />
               </td>
-              <td>{positionTop}</td>
+              <td>{corner}</td>
             </tr>
             <tr className="control">
               <td>Background type:</td>

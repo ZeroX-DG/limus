@@ -18,24 +18,22 @@ export default (props: IImageDisplayProps) => {
     transform: `
         rotateX(${properties.rotationX}deg)
         rotateY(${properties.rotationY}deg)
-        rotateZ(${properties.rotationZ}deg)`,
+        rotateZ(${properties.rotationZ}deg)
+        scale(${properties.scale}, ${properties.scale})`,
     top: `${properties.positionTop}px`,
     left: `${properties.positionLeft}px`,
     borderRadius: `${properties.corner}px`
   };
 
   if (properties.dropShadow) {
-    imageStyle["boxShadow"] =
-      `0 ${properties.shadowY}px ${properties.shadowBlur}px rgba(0, 0, 0, 0.25)`;
+    imageStyle["boxShadow"] = `0 ${properties.shadowY}px ${
+      properties.shadowBlur
+    }px rgba(0, 0, 0, 0.25)`;
   }
 
   return (
     <div className="image-display-wrapper" style={wrapperStyle}>
-      <img
-        className="image-display"
-        src={image}
-        style={imageStyle}
-      />
+      <img className="image-display" src={image} style={imageStyle} />
     </div>
-  )
-}
+  );
+};
