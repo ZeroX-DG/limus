@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import store from "../store";
 import SnippetStoreImage from "../../static/snippetstore.png";
@@ -7,6 +7,11 @@ import FreeTransformImage from "../../static/free-transform.gif";
 import "./index.sass";
 
 export default withRouter(({ history }) => {
+  const [isEmailValid, setEmailValid] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
   const handleOpenFile = () => {
     document.getElementById("image-input").click();
   };
@@ -18,6 +23,29 @@ export default withRouter(({ history }) => {
       history.push("/app");
     };
     reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const handleSubscribe = () => {
+    const date = new Date();
+    const endpoint = `https://script.google.com/macros/s/AKfycbyB4DlJxp__U3-QpUcYpm1StqHW8UF97YKkFfUIJmWtEloeDg8/exec?email=${encodeURIComponent(
+      email
+    )}&JoinDate=${encodeURIComponent(
+      date.toDateString()
+    )}&Time=${date.getTime()}&sheet=limusEmail`;
+    setIsSending(true);
+    fetch(endpoint, { method: "GET" }).then(() => {
+      setIsSubscribed(true);
+      setIsSending(false);
+    });
+  };
+
+  const handleEmailChange = (e: any) => {
+    if (e.target.value) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+    setEmail(e.target.value);
   };
 
   return (
@@ -80,6 +108,60 @@ export default withRouter(({ history }) => {
         <div className="right-part">
           <img src={FreeTransformImage} style={{ boxShadow: "none" }} />
         </div>
+      </div>
+      <div className="subscribe">
+        <h1>Interested?</h1>
+        <p>
+          If you are interested, you can leave your email down below to receive
+          up-to-date information about this app.
+        </p>
+        <p className="email-input">
+          <input
+            type="text"
+            onChange={handleEmailChange}
+            placeholder="email@example.com"
+          />
+        </p>
+        <p className="email-input-button">
+          {!isSubscribed ? (
+            isEmailValid ? (
+              !isSending ? (
+                <button onClick={handleSubscribe}>Subscribe</button>
+              ) : (
+                "Submitting your email..."
+              )
+            ) : (
+              ""
+            )
+          ) : (
+            "Your email has been submitted successfully"
+          )}
+        </p>
+      </div>
+      <div className="faqs">
+        <h1>FAQ</h1>
+        <div className="faq">
+          <p className="question">How can I request new feature?</p>
+          <p className="answer">
+            You can send me a tweet at{" "}
+            <a href="https://twitter.com/ZeroX_Hung">@ZeroX_Hung</a>, or use the
+            chat box down below.
+          </p>
+        </div>
+        <div className="faq">
+          <p className="question">Will this app free forever?</p>
+          <p className="answer">
+            As much as I love open source and free softwares, this app will
+            eventually became a paid app. In the future, users will have to pay
+            for the extra features.
+          </p>
+        </div>
+      </div>
+      <div className="footer">
+        <p>
+          Made with <span className="heart">♥</span> by{" "}
+          <a href="https://github.com/ZeroX-DG">Viet Hung Nguyen</a>
+        </p>
       </div>
     </div>
   );
