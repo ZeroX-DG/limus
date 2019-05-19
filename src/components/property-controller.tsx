@@ -298,7 +298,7 @@ export default (props: IPropertyControllerProps) => {
                   type="range"
                   value={positionLeft}
                   onChange={handleSliderChange("positionLeft")}
-                  min="0"
+                  min="-500"
                   max={window.innerWidth}
                 />
               </td>
@@ -311,7 +311,7 @@ export default (props: IPropertyControllerProps) => {
                   type="range"
                   value={positionTop}
                   onChange={handleSliderChange("positionTop")}
-                  min="0"
+                  min="-500"
                   max={window.innerHeight}
                 />
               </td>

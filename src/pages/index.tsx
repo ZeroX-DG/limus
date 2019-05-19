@@ -168,8 +168,8 @@ export default withRouter(({ history }) => {
           <p className="question">How can I request new feature?</p>
           <p className="answer">
             You can send me a tweet at{" "}
-            <a href="https://twitter.com/ZeroX_Hung">@ZeroX_Hung</a>, or use the
-            chat box down below.
+            <a href="https://twitter.com/ZeroX_Hung">@ZeroX_Hung</a>, send me an
+            email at limusapp@outlook.com, or use the chat box down below.
           </p>
         </div>
         <div className="faq">
