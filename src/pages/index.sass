@@ -30,6 +30,20 @@
   color: grey
   text-align: center
   position: relative
+  &.dragover
+    .inner-border
+      width: calc(100% - 40px)
+      height: calc(100% - 40px)
+      top: 20px
+      left: 20px
+      border-color: rgba(0, 0, 0, 0.6)
+    .inner-content
+      button
+        opacity: 0
+      .or-text
+        opacity: 0
+      .main-drop-text
+        font-size: 30px
   .inner-border
     width: calc(100% - 20px)
     height: calc(100% - 20px)
@@ -38,12 +52,15 @@
     top: 10px
     border: 5px dashed rgba(0, 0, 0, 0.25)
     box-sizing: border-box
+    transition: all 0.3s
   .inner-content
     box-sizing: border-box
     width: calc(100% - 40px)
     top: 50px
     z-index: 10
     position: absolute
+    .or-text, .main-drop-text
+      transition: all 0.3s
     button
       border: none
       padding: 10px 20px
@@ -53,6 +70,7 @@
       outline: none
       font-family: inherit
       cursor: pointer
+      transition: all 0.3s
 .feature
   width: 100%
   margin-top: 100px

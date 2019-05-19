@@ -11,6 +11,7 @@ export default withRouter(({ history }) => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false);
 
   const handleOpenFile = () => {
     document.getElementById("image-input").click();
@@ -48,17 +49,40 @@ export default withRouter(({ history }) => {
     setEmail(e.target.value);
   };
 
+  const handleFileDragOver = (e: any) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleFileDrop = (e: any) => {
+    e.preventDefault();
+    const imageInput = document.getElementById(
+      "image-input"
+    ) as HTMLInputElement;
+    imageInput.files = e.dataTransfer.files;
+  };
+
+  const handleFileDragExit = e => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
   return (
     <div id="index-page">
       <div className="header">
         <p className="title">Limus</p>
         <p className="sub-title">Look at your screenshot at different angles</p>
       </div>
-      <div className="image-start">
+      <div
+        className={`image-start ${isDragOver ? "dragover" : ""}`}
+        onDrop={handleFileDrop}
+        onDragOver={handleFileDragOver}
+        onDragLeave={handleFileDragExit}
+      >
         <div className="inner-border" />
         <div className="inner-content">
-          <p>Drop you screenshot here</p>
-          <p>OR</p>
+          <p className="main-drop-text">Drop you screenshot here</p>
+          <p className="or-text">OR</p>
           <button onClick={handleOpenFile}>Browse file</button>
         </div>
         <input
