@@ -1,46 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Limus | Generating screenshot at different perspective</title>
     <style>
-     html, body {
-         padding: 0;
-         margin: 0;
-     }
-     html, body, #app {
-         width: 100%;
-         height: 100%;
-     }
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+      }
     </style>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Open+Sans" rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Open+Sans"
+      crossorigin="anonymous"
+      rel="stylesheet"
+    />
     <!-- Start of Async Drift Code -->
     <script>
-     "use strict";
+      'use strict';
 
-     !function() {
-         var t = window.driftt = window.drift = window.driftt || [];
-         if (!t.init) {
-             if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-             t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-                                   t.factory = function(e) {
-                                       return function() {
-                                           var n = Array.prototype.slice.call(arguments);
-                                           return n.unshift(e), t.push(n), t;
-                                       };
-                                   }, t.methods.forEach(function(e) {
-                                       t[e] = t.factory(e);
-                                   }), t.load = function(t) {
-                                       var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-                                       o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                                       var i = document.getElementsByTagName("script")[0];
-                                       i.parentNode.insertBefore(o, i);
-                                   };
-         }
-     }();
-     drift.SNIPPET_VERSION = '0.3.1';
-     drift.load('kphrs7e87ue9');
+      !(function() {
+        var t = (window.driftt = window.drift = window.driftt || []);
+        if (!t.init) {
+          if (t.invoked)
+            return void (
+              window.console &&
+              console.error &&
+              console.error('Drift snippet included twice.')
+            );
+          (t.invoked = !0),
+            (t.methods = [
+              'identify',
+              'config',
+              'track',
+              'reset',
+              'debug',
+              'show',
+              'ping',
+              'page',
+              'hide',
+              'off',
+              'on',
+            ]),
+            (t.factory = function(e) {
+              return function() {
+                var n = Array.prototype.slice.call(arguments);
+                return n.unshift(e), t.push(n), t;
+              };
+            }),
+            t.methods.forEach(function(e) {
+              t[e] = t.factory(e);
+            }),
+            (t.load = function(t) {
+              var e = 3e5,
+                n = Math.ceil(new Date() / e) * e,
+                o = document.createElement('script');
+              (o.type = 'text/javascript'),
+                (o.async = !0),
+                (o.crossorigin = 'anonymous'),
+                (o.src =
+                  'https://js.driftt.com/include/' + n + '/' + t + '.js');
+              var i = document.getElementsByTagName('script')[0];
+              i.parentNode.insertBefore(o, i);
+            });
+        }
+      })();
+      drift.SNIPPET_VERSION = '0.3.1';
+      drift.load('kphrs7e87ue9');
     </script>
     <!-- End of Async Drift Code -->
   </head>
