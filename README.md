@@ -1,22 +1,54 @@
-<img width="100%" src="./static/logo.png" />
+<p align="center">
+  <img src="./static/logo.png" />
+</p>
+
+<p align="center" style="font-weight: bold; text-align: center; font-family: monospace; padding-bottom: 15px;">Look at your screenshot at different angles</p>
 
 <p align="center">
-  <a href="/LICENSE">
-    <img src="https://img.shields.io/github/license/ZeroX-DG/limus.svg" alt="MIT License" />
-  </a>
+  <img src="https://img.shields.io/github/license/ZeroX-DG/limus?style=for-the-badge"/>
 </p>
 
 ## Introduction
 
-Remember those fancy rotated pictures of app screenshots that you saw? Well, I find it very inconvenient to do all that transforming on Photoshop or similar tools. Therefore, I created this tool to help you transform you screenshots/images faster.
+<p align="center">
+  <img src="./static/intro.png" />
+</p>
+
+Remember those fancy rotated app screenshots that you saw? Well, I find it very inconvenient to do all those transformations on Photoshop or similar tools. Therefore, I created this tool to help you transform you screenshots/images faster and easier.
 
 ## How to use?
 
-All you need to do is to access the app [here](https://limus.netlify.app/). Then, follow a short tutorial to explore how you can use this tool:
+### Online
+
+The easiest way to use this app is to use it online at [limus.netlify.app](https://limus.netlify.app/)
 
 <p align="center">
-  <img "./static/limus-in-action.gif" />
+  <img src="./static/limus-in-action.gif" />
 </p>
+
+### Self-hosted
+
+You can also clone the app and host it yourself. To self-host the app, you can follow these steps:
+
+1. Clone the repository
+
+```
+git clone https://github.com/ZeroX-DG/limus
+```
+
+2. Install dependencies
+
+```
+npm install
+```
+
+3. Build the app
+
+```
+npm run build
+```
+
+4. Deploy the `dist/` folder just like a static web page.
 
 ## Features
 
@@ -53,7 +85,6 @@ Limus is a project by:
 
 All pull requests are welcome!
 
-If you find this app useful and wish to support the author, feel free to buy him a coffee though he would prefer tea instead.
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z81ODLC)
+If you found this app helpful and wish to support the author by buying him a coffee...though he would prefer tea instead, but coffee is fine.
 
-Since I'm still young, dumb, and broke, I have to give [netlify](https://www.netlify.com/) a big thank you for offering a free plan and hosting this app. Although the app domain is not very professional, but I'll try to get a better domain once I receive more attention of the community and have sponsorships.
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z81ODLC)
