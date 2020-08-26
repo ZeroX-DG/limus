@@ -5,7 +5,7 @@
 <p align="center" style="font-weight: bold; text-align: center; font-family: monospace; padding-bottom: 15px;">Look at your screenshot at different angles</p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/ZeroX-DG/limus?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/license-MIT-success?style=for-the-badge"/>
 </p>
 
 ## Introduction
