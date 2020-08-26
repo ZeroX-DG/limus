@@ -121,15 +121,25 @@
 
 .footer
   width: 100%
-  height: 80px
-  display: flex
-  align-items: center
-  justify-content: center
   font-family: 'Lato', sans-serif
-  font-size: 20px
-  line-height: 20px
-  .heart
-    color: #e74c3c
+  font-size: 18px
+  box-sizing: border-box
+  padding: 20px 0
+  color: rgba(0, 0, 0, 0.7)
+  .content
+    width: 70%
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    .info
+      margin-bottom: 20px
+      font-size: 30px
+      a
+        margin-right: 30px
+        &:last-child
+          margin-right: 0
 a
   color: inherit
 

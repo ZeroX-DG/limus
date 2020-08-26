@@ -115,10 +115,19 @@ export default withRouter(({ history }) => {
         </video>
       </div>
       <div className="footer">
-        <p>
-          Made with <span className="heart">♥</span> by{" "}
-          <a href="https://github.com/ZeroX-DG">Viet Hung Nguyen</a>
-        </p>
+        <div className="content">
+          <div className="info">
+            <a href="https://github.com/ZeroX-DG/limus">
+              <i className="fa fa-github" />
+            </a>
+            <a href="https://github.com/ZeroX-DG/limus/issues/new">
+              <i className="fa fa-bug" />
+            </a>
+          </div>
+          <div className="credit">
+            Create by <a href="https://zerox-dg.github.io/">Viet Hung Nguyen</a>
+          </div>
+        </div>
       </div>
     </div>
   );
