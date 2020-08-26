@@ -14,7 +14,7 @@
   <img src="./static/intro.png" />
 </p>
 
-Remember those fancy rotated app screenshots that you saw? Well, I find it very inconvenient to do all those transformations on Photoshop or similar tools. Therefore, I created this tool to help you transform you screenshots/images faster and easier.
+Remember those fancy rotated app screenshots that you saw? Well, I find it very inconvenient to do all those transformations on Photoshop or similar tools. Therefore, I created this tool to help you transform your screenshots/images faster and easier.
 
 ## How to use?
 
@@ -58,19 +58,19 @@ By adjusting the `x`, `y`, `z` rotation parameter, you can rotate you image to t
 
 #### Scaling
 
-When you first upload the image, you might find it too big or too small for your shot, that's because Limus display image using its' true size without scaling. However, you can choose to scale up or down the picture using the `Image scale` slider.
+When you first upload the image, you might find it too big or too small for your shot. That's because Limus displays your image using its' original size without scaling. However, you can choose to scale up or down the picture using the `Image scale` slider.
 
 #### Drop shadow
 
-Having a shadow drop can be very convenient when you have a image that can blend in with the background. With Limus, you have the option adjust the shadow `y` position as well as how blury you want your shadow to be.
+Having a shadow drop can be very convenient when you have an image that can blend in with the background. With Limus, you have the option to adjust the shadow position as well as how blurry you want your shadow to be.
 
 #### Different types of background
 
-With Limus, you can also change the background of the shot from a plain color background to transparent background or even using an image as a background!
+With Limus, you can also change the background of the shot from a plain colour background to transparent background or even using an image as a background!
 
-#### Free transform
+#### Free-transform
 
-If you having trouble adjusting your image with the `x`, `y`, `z` rotation sliders, you can always hold the `Shift` key and the app with go into `free transform` mode and you can freely rotate your image by dragging the image using your mouse.
+If you are having trouble adjusting your image with the `x`, `y`, `z` rotation sliders, you can always hold the <kbd>Shift</kbd> key, and the app with go into free-transform mode. In this mode, you can freely rotate your image by dragging the image using your mouse.
 
 ## Author
 
