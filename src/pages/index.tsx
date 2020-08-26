@@ -16,8 +16,8 @@ export default withRouter(({ history }) => {
 
   const handleFileChange = (e: any) => {
     var reader = new FileReader();
-    reader.onload = (event: any) => {
-      store.setState({ image: event.target.result });
+    reader.onload = async (event: any) => {
+      await store.setState({ image: event.target.result });
       history.push("/app");
     };
     reader.readAsDataURL(e.target.files[0]);
