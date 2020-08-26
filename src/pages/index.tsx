@@ -4,7 +4,7 @@ import store from "../store";
 import SnippetStoreImage from "../../static/snippetstore.png";
 import ControlPanelImage from "../../static/control-panel.png";
 import FreeTransformImage from "../../static/free-transform.gif";
-import LimusInAction from "../../static/limus.mp4";
+import LimusInAction from "../../static/limus.webm";
 import "./index.sass";
 
 export default withRouter(({ history }) => {
