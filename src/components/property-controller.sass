@@ -23,9 +23,11 @@
     display: flex
     align-items: center
     justify-content: space-between
+    .label
+      margin-left: 4px // compensate for table 4 px margin bug
     input
       width: calc(100% - 230px)
-      margin-left: 30px
+      margin-left: 16px
     .camera
       display: block
       cursor: pointer
@@ -41,6 +43,8 @@
     height: 30px
     .control-name
       margin-right: 20px
+    td:nth-child(3)
+      width: 40px
     button
       border: none
       border-radius: 5px

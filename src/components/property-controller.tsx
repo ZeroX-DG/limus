@@ -224,7 +224,7 @@ export default (props: IPropertyControllerProps) => {
       style={{ opacity: controllerOpacity / 100 }}
     >
       <div className="controller-opacity">
-        <span>Controller opacity: </span>
+        <span className="label">Controller opacity: </span>
         <input
           type="range"
           value={controllerOpacity}
