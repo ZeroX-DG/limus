@@ -85,6 +85,6 @@ Limus is a project by:
 
 All pull requests are welcome!
 
-If you found this app helpful and wish to support the author. You can buy him a coffee...though he would prefer tea instead, but coffee is fine.
+If you found this app helpful and wish to support the author, you can buy him a coffee...though he would prefer tea instead, but coffee is fine.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z81ODLC)
