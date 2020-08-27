@@ -2,7 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Limus | Generating screenshot at different perspective</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Make your screenshot/image more professional by rotating it, adding shadow for it and more."
+    />
+    <link rel="icon" type="image/png" href="./static/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="./static/favicon.ico" />
+    <title>Limus | Transform image to different angles</title>
     <style>
       html,
       body {
@@ -26,9 +33,44 @@
       crossorigin="anonymous"
       rel="stylesheet"
     />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:description"
+      content="Make your screenshot/image more professional by rotating it, adding shadow for it and more."
+    />
+    <meta
+      name="twitter:title"
+      content="Limus | Transform image to different angles"
+    />
+    <meta name="twitter:site" content="@ZeroX_Hung" />
+    <meta name="twitter:image" content="./static/banner.png" />
+    <meta name="twitter:creator" content="@ZeroX_Hung" />
+    <meta
+      property="og:title"
+      content="Limus | Transform image to different angles"
+    />
+    <meta
+      property="og:description"
+      content="Make your screenshot/image more professional by rotating it, adding shadow for it and more."
+    />
+    <meta name="og:image" content="./static/banner.png" />
   </head>
   <body>
     <div id="app"></div>
     <script src="src/index.tsx"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-123395923-5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-123395923-5");
+    </script>
   </body>
 </html>
