@@ -1,6 +1,7 @@
 import * as React from "react";
 import logo from "../../static/logo.png";
-import LimusInAction from "../../static/limus.webm";
+import LimusInActionMp4 from "../../static/limus.mp4";
+import LimusInActionWebM from "../../static/limus.webm";
 import "./mobile.sass";
 
 export default () => {
@@ -12,7 +13,8 @@ export default () => {
       <div className="limus-in-action">
         <h1>Limus in action</h1>
         <video controls={true}>
-          <source src={LimusInAction} type={"video/mp4"} />
+          <source src={LimusInActionMp4} type={"video/mp4"} />
+          <source src={LimusInActionWebM} type={"video/webm"} />
           Your browser does not support the video tag.
         </video>
       </div>

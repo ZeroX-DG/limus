@@ -4,7 +4,8 @@ import store from "../store";
 import SnippetStoreImage from "../../static/snippetstore.png";
 import ControlPanelImage from "../../static/control-panel.png";
 import FreeTransformImage from "../../static/free-transform.gif";
-import LimusInAction from "../../static/limus.webm";
+import LimusInActionWebM from "../../static/limus.webm";
+import LimusInActionMp4 from "../../static/limus.mp4";
 import "./index.sass";
 
 export default withRouter(({ history }) => {
@@ -110,7 +111,8 @@ export default withRouter(({ history }) => {
       <div className="in-action">
         <h1>Limus in action</h1>
         <video controls={true}>
-          <source src={LimusInAction} type={"video/mp4"} />
+          <source src={LimusInActionMp4} type={"video/mp4"} />
+          <source src={LimusInActionWebM} type={"video/webm"} />
           Your browser does not support the video tag.
         </video>
       </div>
