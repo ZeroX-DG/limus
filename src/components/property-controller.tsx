@@ -133,6 +133,7 @@ export default (props: IPropertyControllerProps) => {
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("wheel", handleWheel);
     props.onPropertyChange(getAllProperties());
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
@@ -140,8 +141,16 @@ export default (props: IPropertyControllerProps) => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("wheel", handleWheel);
     };
   });
+
+  const handleWheel = e => {
+    const delta = e.deltaY * -0.01;
+    const newScale = Math.min(Math.max(0.1, scale + delta), 4);
+    setScale(Math.round((newScale + Number.EPSILON) * 100) / 100);
+    props.onPropertyChange(getAllProperties());
+  };
 
   const handleKeyUp = () => {
     setIsFreeHandRotate(false);
