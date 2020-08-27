@@ -6,7 +6,11 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html"
   },
-  "keywords": ["screenshot", "perspective", "angle"],
+  "keywords": [
+    "screenshot",
+    "perspective",
+    "angle"
+  ],
   "assetsPath": "./static",
   "author": "Viet Hung Nguyen <viethungax@gmail.com>",
   "license": "MIT",
@@ -24,6 +28,7 @@
   },
   "dependencies": {
     "dom-to-image": "^2.6.0",
+    "mobile-detect": "^1.4.4",
     "parcel-plugin-asset-copier": "^1.1.0",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
