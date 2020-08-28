@@ -13,7 +13,7 @@ export default (props: ISwitchProps) => {
   const onChange = (index: number) => {
     setIndex(index);
     props.onChange(props.values[index]);
-  }
+  };
   useEffect(() => {
     for (let i = 0; i < props.values.length; i++) {
       if (props.value === props.values[i]) {
@@ -24,17 +24,15 @@ export default (props: ISwitchProps) => {
   });
   return (
     <div className="multi-switch">
-      {
-        props.labels.map((label, i: number) => (
-          <div
-            key={i}
-            className={`switch ${index === i ? "active" : ""}`}
-            onClick={() => onChange(i)}
-          >
-            {label}
-          </div>
-        ))
-      }
+      {props.labels.map((label, i: number) => (
+        <button
+          key={i}
+          className={`switch ${index === i ? "active" : ""}`}
+          onClick={() => onChange(i)}
+        >
+          {label}
+        </button>
+      ))}
     </div>
-  )
-}
+  );
+};

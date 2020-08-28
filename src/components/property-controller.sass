@@ -1,6 +1,6 @@
 .property-controller
   width: 850px
-  height: 280px
+  height: 300px
   background: white
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25)
   position: absolute
@@ -26,11 +26,18 @@
     .label
       margin-left: 4px // compensate for table 4 px margin bug
     input
-      width: calc(100% - 230px)
+      width: calc(100% - 284px)
       margin-left: 16px
     .camera
       display: block
       cursor: pointer
+      border: none
+      padding: 5px 14px
+      background: #6c5ce7
+      color: white
+      border-radius: 5px
+      i
+        margin-right: 5px
   .main-controls
     display: flex
   table
@@ -45,13 +52,3 @@
       margin-right: 20px
     td:nth-child(3)
       width: 40px
-    button
-      border: none
-      border-radius: 5px
-      font-family: inherit
-      padding: 5px 10px
-      box-sizing: border-box
-      outline: none
-      cursor: pointer
-      background: #3498db
-      color: white

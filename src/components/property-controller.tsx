@@ -241,9 +241,9 @@ export default (props: IPropertyControllerProps) => {
           min="20"
           max="100"
         />
-        <span className="camera" onClick={handleExportImage}>
-          <i className="fa fa-camera" />
-        </span>
+        <button className="camera" onClick={handleExportImage}>
+          <i className="fa fa-camera" /> Save
+        </button>
       </div>
       <div className="main-controls">
         <table>
@@ -400,7 +400,7 @@ export default (props: IPropertyControllerProps) => {
             </tr>
             <tr className="control">
               <td>Background type:</td>
-              <td>
+              <td colspan="2">
                 <Switch
                   value={backgroundType}
                   values={["color", "image", "none"]}
@@ -430,7 +430,10 @@ export default (props: IPropertyControllerProps) => {
                     style={{ display: "none" }}
                     onChange={handleBackgroundImageInput}
                   />
-                  <button onClick={handlePickBackground}>
+                  <button
+                    id="pick-background-btn"
+                    onClick={handlePickBackground}
+                  >
                     Pick background
                   </button>
                 </td>
