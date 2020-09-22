@@ -35,9 +35,12 @@ export default withRouter(({ history }) => {
       "image-input"
     ) as HTMLInputElement;
     imageInput.files = e.dataTransfer.files;
+    const event = document.createEvent("UIEvents");
+    event.initUIEvent("change", true, true, undefined, undefined);
+    imageInput.dispatchEvent(event);
   };
 
-  const handleFileDragExit = e => {
+  const handleFileDragExit = (e: any) => {
     e.preventDefault();
     setIsDragOver(false);
   };

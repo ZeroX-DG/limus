@@ -145,7 +145,7 @@ export default (props: IPropertyControllerProps) => {
     };
   });
 
-  const handleWheel = e => {
+  const handleWheel = (e: any) => {
     const delta = e.deltaY * -0.01;
     const newScale = Math.min(Math.max(0.1, scale + delta), 4);
     setScale(Math.round((newScale + Number.EPSILON) * 100) / 100);
@@ -400,7 +400,7 @@ export default (props: IPropertyControllerProps) => {
             </tr>
             <tr className="control">
               <td>Background type:</td>
-              <td colspan="2">
+              <td colSpan={2}>
                 <Switch
                   value={backgroundType}
                   values={["color", "image", "none"]}
